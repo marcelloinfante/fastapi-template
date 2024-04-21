@@ -29,7 +29,7 @@ docker compose down
 8. Run the migrations:
 
 ```
-docker compose exec web alembic upgrade head
+docker compose run web alembic upgrade head
 ```
 
 9. When you want to stop the containers, press Ctrl+C or:
