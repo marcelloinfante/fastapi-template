@@ -1,0 +1,11 @@
+.venv
+.pytest_cache
+.env.example
+.coverage
+.coverager
+.vscode
+htmlcov
+.git
+.gitignore
+.chroma_env.example
+deploy.sh
