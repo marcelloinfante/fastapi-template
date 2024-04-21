@@ -1,3 +1,5 @@
+![_0d9dff30-31b7-499c-ae59-2787aa630094](https://github.com/marcelloinfante/happy-scribe-api/assets/80683232/31e06e26-d3f6-4295-9370-9040ad329222)
+
 # Happy Scribe API
 
 ## Quick Start
