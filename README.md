@@ -57,7 +57,7 @@ docker compose up
 docker compose run web pytest
 ```
 
-## Run Tests com Coverage
+## Run Tests with Coverage
 
 1. Run tests with [Pytest](https://docs.pytest.org/en/7.1.x/contents.html).
 
