@@ -6,7 +6,7 @@
 
 1. Install [Docker](https://www.docker.com) on your machine.
 2. Start Docker.
-3. Add the environment variables in the .env file.
+3. Add the environment variables in the `.env` file.
 4. Open the terminal in the root of the project.
 5. Build the image:
 
@@ -20,7 +20,7 @@ docker compose build
 docker compose up
 ```
 
-7. Stop the containers pressing Ctrl+C or:
+7. Stop the containers pressing `Ctrl+C` or:
 
 ```
 docker compose down
@@ -32,7 +32,7 @@ docker compose down
 docker compose run web alembic upgrade head
 ```
 
-9. When you want to stop the containers, press Ctrl+C or:
+9. When you want to stop the containers, press `Ctrl+C` or:
 
 ```
 docker compose down
