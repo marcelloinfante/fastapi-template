@@ -75,6 +75,8 @@ docker compose run web coverage run -m pytest
 docker compose run web coverage report
 ```
 
+![image](https://github.com/marcelloinfante/happy-scribe-api/assets/80683232/9fc5a849-2cea-42e4-8797-17c4ead8a568)
+
 ### HTML
 
 3. Run:
