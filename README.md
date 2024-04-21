@@ -32,7 +32,13 @@ docker compose down
 docker compose run web alembic upgrade head
 ```
 
-9. When you want to stop the containers, press `Ctrl+C` or:
+9. Run the containers
+
+```
+docker compose up
+```
+
+10. When you want to stop the containers, press `Ctrl+C` or:
 
 ```
 docker compose down
