@@ -12,29 +12,42 @@
 docker compose build
 ```
 
-6. Run the containers:
+6. Run the containers to create the Database:
 
 ```
 docker compose up
 ```
 
-7. Run the migrations:
-
-```
-docker compose exec web alembic upgrade head
-```
-
-8. When you want to stop the containers, press Ctrl+C or:
+7. Stop the containers pressing Ctrl+C or:
 
 ```
 docker compose down
 ```
 
-## Delete Database
+8. Run the migrations:
 
 ```
-docker compose down -v
+docker compose exec web alembic upgrade head
 ```
+
+9. When you want to stop the containers, press Ctrl+C or:
+
+```
+docker compose down
+```
+
+## API Documentation
+
+1. Run the containers
+
+```
+docker compose up
+```
+
+2. Access:
+
+- Swagger: http://localhost:8000/api/v1/docs
+- Redoc: http://localhost:8000/api/v1/redoc
 
 ## Run Tests
 
@@ -74,18 +87,11 @@ docker compose run web coverage html
 
 ![image](https://github.com/marcelloinfante/ai-studio-api/assets/80683232/24a840f3-75dd-4645-b5f6-060aa13f4db8)
 
-## API Documentation
-
-1. Run the containers
+## Delete Database
 
 ```
-docker compose up
+docker compose down -v
 ```
-
-2. Access:
-
-- Swagger: http://localhost:8000/api/v1/docs
-- Redoc: http://localhost:8000/api/v1/redoc
 
 ## Create migration
 
@@ -111,16 +117,10 @@ docker compose run web alembic downgrade base
 docker compose run web alembic history
 ```
 
-## Run Commands in Container's terminal
+## Run Commands in Container terminal
 
 ```
 docker compose run web COMMAND
-```
-
-## Permissions
-
-```
-sudo chown -R $USER:$USER .
 ```
 
 ## Seeds
