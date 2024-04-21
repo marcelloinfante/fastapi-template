@@ -85,7 +85,7 @@ docker compose run web coverage html
 6. Go to http://localhost:5500/htmlcov/
 7. Check the test coverage via HTML:
 
-![image](https://github.com/marcelloinfante/ai-studio-api/assets/80683232/24a840f3-75dd-4645-b5f6-060aa13f4db8)
+![image](https://github.com/marcelloinfante/happy-scribe/assets/80683232/5f0c71a3-50ac-4fe8-bf0c-ef90aedf890a)
 
 ## Delete Database
 
