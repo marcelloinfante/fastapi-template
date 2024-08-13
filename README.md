@@ -1,6 +1,17 @@
-![_0d9dff30-31b7-499c-ae59-2787aa630094](https://github.com/marcelloinfante/happy-scribe-api/assets/80683232/31e06e26-d3f6-4295-9370-9040ad329222)
+![_0d9dff30-31b7-499c-ae59-2787aa630094](https://camo.githubusercontent.com/580b7032c938b3cbf4f2547383a8d43d86aba159622747f1993b0e45c04f0665/68747470733a2f2f666173746170692e7469616e676f6c6f2e636f6d2f696d672f6c6f676f2d6d617267696e2f6c6f676f2d7465616c2e706e67)
 
-# Happy Scribe API
+# FastAPI Template
+
+## Built-In Features:
+- [JWT Auth](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/)
+- Admin ([SQLAdmin](https://aminalaee.dev/sqladmin/))
+- ORM ([SQLModel](https://sqlmodel.tiangolo.com/) / [SQLAlquemy](https://www.sqlalchemy.org/))
+- Migration ([Alembic](https://alembic.sqlalchemy.org/en/latest/))
+- Tests ([Pytest](https://docs.pytest.org/en/stable/))
+- Coverage ([Coverage](https://coverage.readthedocs.io/en/7.6.1/))
+- camelCase API
+- [Docker Compose](https://www.docker.com/)
+- [PostgresSQL](https://www.postgresql.org/)
 
 ## Quick Start
 
