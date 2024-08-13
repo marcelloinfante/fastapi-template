@@ -2,6 +2,7 @@ from sqlmodel import Session
 from fastapi.testclient import TestClient
 
 from tests.factories.user import UserFactory
+from tests.factories.plan import PlanFactory
 
 from app.models.user import UserRead
 
@@ -10,6 +11,9 @@ from app.utils.create_access_token import create_access_token
 
 def test_get_current_user(client: TestClient, session: Session):
     user = UserFactory().create(session)
+
+    plan_factory = PlanFactory(user_id=user.id)
+    plan_factory.create(session=session)
 
     access_token = create_access_token(user.id)
 

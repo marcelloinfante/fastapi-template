@@ -4,6 +4,7 @@ from sqlmodel import Session
 from fastapi import HTTPException
 
 from app.models.user import User, UserIn
+from app.models.plan import Plan
 
 from app.interactors.auth.register import Register
 
@@ -18,7 +19,9 @@ def test_register(session: Session):
     user = session.get(User, result["user"].id)
 
     assert result["user"] == user
+    assert result["user"].plan == user.plan
     assert isinstance(result["user"], User)
+    assert isinstance(result["user"].plan, Plan)
     assert isinstance(result["access_token"], str)
 
 

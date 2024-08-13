@@ -2,12 +2,13 @@ from uuid import UUID
 from datetime import datetime
 
 import pytest
-from sqlmodel import Session, select
+from sqlmodel import Session
 from sqlalchemy.exc import IntegrityError
 
 from app.models.user import User
 
 from tests.factories.user import UserFactory
+from tests.factories.plan import PlanFactory
 
 
 def test_create_user(session: Session):
@@ -28,6 +29,17 @@ def test_create_user(session: Session):
     assert user.first_name == user_factory.first_name
     assert user.last_name == user_factory.last_name
     assert user.is_admin == user_factory.is_admin
+
+
+def test_create_user_with_plan(session: Session):
+    user_factory = UserFactory()
+    user = user_factory.create(session)
+
+    plan_factory = PlanFactory(user_id=user.id)
+    plan = plan_factory.create(session)
+
+    assert user.plan == plan
+    assert plan.user == user
 
 
 def test_create_user_without_email(session: Session):

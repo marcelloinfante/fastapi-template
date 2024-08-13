@@ -10,6 +10,7 @@ from app.config import settings
 
 from app.admin.auth import AdminAuth
 from app.admin.user import UserAdmin
+from app.admin.plan import PlanAdmin
 
 
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
@@ -36,3 +37,4 @@ authentication_backend = AdminAuth(secret_key=settings.admin_secret_key)
 admin = Admin(app, engine, authentication_backend=authentication_backend)
 
 admin.add_view(UserAdmin)
+admin.add_view(PlanAdmin)

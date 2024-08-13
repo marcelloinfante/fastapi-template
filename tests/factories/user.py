@@ -1,4 +1,4 @@
-from pydantic import EmailStr, BaseModel, Field
+from pydantic import EmailStr, Field
 from sqlmodel import Session
 
 from faker import Faker
@@ -7,10 +7,12 @@ from app.models.user import User
 
 from app.utils.encrypt_password import encrypt_password
 
+from tests.factories.base import BaseFactory
+
 fake = Faker()
 
 
-class UserFactory(BaseModel):
+class UserFactory(BaseFactory):
     is_admin: bool | None = False
 
     email: EmailStr | None = Field(default_factory=fake.unique.email)

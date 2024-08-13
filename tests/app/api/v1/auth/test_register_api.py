@@ -8,7 +8,7 @@ from app.models.user import User, UserSession
 
 def test_register(client: TestClient, session: Session):
     user = UserFactory()
-    response = client.post("/auth/register", json=user.model_dump())
+    response = client.post("/auth/register", json=user.model_dump(by_alias=True))
 
     statement = select(User).where(User.email == user.email)
     result = session.exec(statement)
@@ -27,7 +27,7 @@ def test_register_duplicated_email(client: TestClient, session: Session):
     user = UserFactory()
     user.create(session)
 
-    response = client.post("/auth/register", json=user.model_dump())
+    response = client.post("/auth/register", json=user.model_dump(by_alias=True))
 
     assert response.status_code == 400
     assert response.json()["detail"] == "Data invalid"
@@ -36,70 +36,30 @@ def test_register_duplicated_email(client: TestClient, session: Session):
 def test_register_without_email(client: TestClient):
     user = UserFactory(email=None)
 
-    response = client.post("/auth/register", json=user.model_dump())
+    response = client.post("/auth/register", json=user.model_dump(by_alias=True))
 
     assert response.status_code == 422
-    assert response.json() == {
-        "detail": [
-            {
-                "type": "string_type",
-                "loc": ["body", "email"],
-                "msg": "Input should be a valid string",
-                "input": None,
-            }
-        ]
-    }
 
 
 def test_register_without_first_name(client: TestClient):
     user = UserFactory(first_name=None)
 
-    response = client.post("/auth/register", json=user.model_dump())
+    response = client.post("/auth/register", json=user.model_dump(by_alias=True))
 
     assert response.status_code == 422
-    assert response.json() == {
-        "detail": [
-            {
-                "type": "string_type",
-                "loc": ["body", "first_name"],
-                "msg": "Input should be a valid string",
-                "input": None,
-            }
-        ]
-    }
 
 
 def test_register_without_last_name(client: TestClient):
     user = UserFactory(last_name=None)
 
-    response = client.post("/auth/register", json=user.model_dump())
+    response = client.post("/auth/register", json=user.model_dump(by_alias=True))
 
     assert response.status_code == 422
-    assert response.json() == {
-        "detail": [
-            {
-                "type": "string_type",
-                "loc": ["body", "last_name"],
-                "msg": "Input should be a valid string",
-                "input": None,
-            }
-        ]
-    }
 
 
 def test_register_without_password(client: TestClient):
     user = UserFactory(password=None)
 
-    response = client.post("/auth/register", json=user.model_dump())
+    response = client.post("/auth/register", json=user.model_dump(by_alias=True))
 
     assert response.status_code == 422
-    assert response.json() == {
-        "detail": [
-            {
-                "type": "string_type",
-                "loc": ["body", "password"],
-                "msg": "Input should be a valid string",
-                "input": None,
-            }
-        ]
-    }

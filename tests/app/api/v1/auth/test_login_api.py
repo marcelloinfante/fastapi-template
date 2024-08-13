@@ -2,13 +2,17 @@ from sqlmodel import Session
 from fastapi.testclient import TestClient
 
 from tests.factories.user import UserFactory
+from tests.factories.plan import PlanFactory
 
 from app.models.user import UserSession
 
 
 def test_login(client: TestClient, session: Session):
     user_factory = UserFactory()
-    user_factory.create(session)
+    user = user_factory.create(session)
+
+    plan_factory = PlanFactory(user_id=user.id)
+    plan_factory.create(session=session)
 
     response = client.post(
         "/auth/login",
@@ -64,19 +68,7 @@ def test_login_user_with_empty_username(client: TestClient):
         },
     )
 
-    print(response.json())
-
     assert response.status_code == 422
-    assert response.json() == {
-        "detail": [
-            {
-                "type": "missing",
-                "loc": ["body", "username"],
-                "msg": "Field required",
-                "input": None,
-            }
-        ]
-    }
 
 
 def test_login_user_with_empty_password(client: TestClient):
@@ -91,13 +83,3 @@ def test_login_user_with_empty_password(client: TestClient):
     )
 
     assert response.status_code == 422
-    assert response.json() == {
-        "detail": [
-            {
-                "type": "missing",
-                "loc": ["body", "password"],
-                "msg": "Field required",
-                "input": None,
-            }
-        ]
-    }

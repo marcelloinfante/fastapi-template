@@ -18,7 +18,7 @@ def test_delete_current_user(client: TestClient, session: Session):
 
     user = session.get(User, created_user.id)
 
-    assert user == None
+    assert user is None
 
     assert response.status_code == 200
 

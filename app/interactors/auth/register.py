@@ -1,6 +1,7 @@
 from fastapi import HTTPException, status
 from sqlmodel import Session
 
+from app.models.plan import Plan
 from app.models.user import User, UserIn, UserSession
 
 from app.utils.encrypt_password import encrypt_password
@@ -17,8 +18,9 @@ class Register:
             user.update({"hashed_password": hashed_password})
 
             user = User.model_validate(user)
+            plan = Plan(user=user)
 
-            session.add(user)
+            session.add_all([user, plan])
             session.commit()
             session.refresh(user)
 
