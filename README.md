@@ -12,6 +12,7 @@
 - camelCase API
 - [Docker](https://www.docker.com/)
 - [PostgreSQL](https://www.postgresql.org/)
+- CI/CD ([Github Actions](https://github.com/features/actions))
 
 ## Quick Start
 
