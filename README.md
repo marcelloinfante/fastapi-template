@@ -1,6 +1,8 @@
 # FastAPI Template
 
 ## Built-In Features:
+
+- [UV](https://docs.astral.sh/uv/)
 - [JWT Auth](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/)
 - Admin ([SQLAdmin](https://aminalaee.dev/sqladmin/))
 - ORM ([SQLModel](https://sqlmodel.tiangolo.com/) / [SQLAlquemy](https://www.sqlalchemy.org/))
@@ -8,8 +10,8 @@
 - Tests ([Pytest](https://docs.pytest.org/en/stable/))
 - Coverage ([Coverage](https://coverage.readthedocs.io/en/7.6.1/))
 - camelCase API
-- [Docker Compose](https://www.docker.com/)
-- [PostgresSQL](https://www.postgresql.org/)
+- [Docker](https://www.docker.com/)
+- [PostgreSQL](https://www.postgresql.org/)
 
 ## Quick Start
 
@@ -44,7 +46,7 @@ docker compose run web alembic upgrade head
 9. Run the containers
 
 ```
-docker compose up
+docker compose up --watch
 ```
 
 10. When you want to stop the containers, press `Ctrl+C` or:
@@ -58,7 +60,7 @@ docker compose down
 1. Run the containers
 
 ```
-docker compose up
+docker compose up --watch
 ```
 
 2. Access:
