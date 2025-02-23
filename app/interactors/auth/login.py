@@ -12,8 +12,8 @@ from app.utils.create_access_token import create_access_token
 
 class Login:
     @classmethod
-    def call(self, username: EmailStr, password: str, session: Session) -> UserSession:
-        user = self._authenticate_user(username, password, session)
+    def call(cls, username: EmailStr, password: str, session: Session) -> UserSession:
+        user = cls._authenticate_user(username, password, session)
 
         if not user:
             raise HTTPException(
@@ -28,7 +28,7 @@ class Login:
 
     @classmethod
     def _authenticate_user(
-        self, username: EmailStr, password: str, session: Session
+        cls, username: EmailStr, password: str, session: Session
     ) -> User:
         statement = select(User).where(User.email == username)
         results = session.exec(statement)
