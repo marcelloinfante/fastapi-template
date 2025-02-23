@@ -1,6 +1,6 @@
 import pytest
 
-from datetime import datetime, timedelta
+import datetime
 
 from fastapi.exceptions import HTTPException
 
@@ -29,7 +29,7 @@ def test_get_current_user(session):
 def test_get_current_user_with_expired_token(session):
     created_user = UserFactory().create(session)
 
-    expire = datetime.utcnow() - timedelta(minutes=10)
+    expire = datetime.datetime.now(datetime.UTC) - datetime.timedelta(minutes=10)
 
     to_encode = {"sub": str(created_user.id), "exp": expire}
 

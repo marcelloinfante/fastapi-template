@@ -68,7 +68,7 @@ def test_login_user_with_empty_username(client: TestClient):
         },
     )
 
-    assert response.status_code == 422
+    assert response.status_code == 401
 
 
 def test_login_user_with_empty_password(client: TestClient):
@@ -82,4 +82,4 @@ def test_login_user_with_empty_password(client: TestClient):
         },
     )
 
-    assert response.status_code == 422
+    assert response.status_code == 401
