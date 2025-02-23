@@ -2,8 +2,6 @@ services:
   web:
     build: .
     command: fastapi dev app/main.py --port 8000
-    # volumes:
-    #   - .:/app
     ports:
       - 8000:8000
     depends_on:
@@ -18,15 +16,15 @@ services:
         - action: rebuild
           path: ./uv.lock
   db:
-    image: postgres:15-alpine
+    image: postgres:17-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     expose:
       - 5432
     environment:
+      - POSTGRES_DB=fastapi
       - POSTGRES_USER=fastapi
       - POSTGRES_PASSWORD=fastapi
-      - POSTGRES_DB=fastapi
 
 volumes:
   postgres_data:
