@@ -1,13 +1,22 @@
 services:
   web:
     build: .
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-    volumes:
-      - .:/app
+    command: fastapi dev app/main.py --port 8000
+    # volumes:
+    #   - .:/app
     ports:
       - 8000:8000
     depends_on:
       - db
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - .venv/
+        - action: rebuild
+          path: ./uv.lock
   db:
     image: postgres:15-alpine
     volumes:
