@@ -1,3 +1,4 @@
+from mangum import Mangum
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -38,3 +39,5 @@ admin = Admin(app, engine, authentication_backend=authentication_backend)
 
 admin.add_view(UserAdmin)
 admin.add_view(PlanAdmin)
+
+handler = Mangum(app, lifespan="off")
