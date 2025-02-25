@@ -8,4 +8,4 @@ htmlcov
 .git
 .gitignore
 .chroma_env.example
-deploy.sh
+scripts
