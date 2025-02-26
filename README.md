@@ -26,31 +26,19 @@
 docker compose build
 ```
 
-6. Run the containers to create the Database:
-
-```
-docker compose up
-```
-
-7. Stop the containers pressing `Ctrl+C` or:
-
-```
-docker compose down
-```
-
-8. Run the migrations:
+6. Run the migrations:
 
 ```
 docker compose run web alembic upgrade head
 ```
 
-9. Run the containers
+7. Run the containers
 
 ```
 docker compose up --watch
 ```
 
-10. When you want to stop the containers, press `Ctrl+C` or:
+8. When you want to stop the containers, press `Ctrl+C` or:
 
 ```
 docker compose down
