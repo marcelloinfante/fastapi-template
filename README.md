@@ -13,6 +13,7 @@
 - [Docker](https://www.docker.com/)
 - [PostgreSQL](https://www.postgresql.org/)
 - CI/CD ([Github Actions](https://github.com/features/actions))
+- [AWS Lamdba](https://aws.amazon.com/pt/lambda/) ([Mangum](https://mangum.fastapiexpert.com/))
 
 ## Quick Start
 
@@ -138,3 +139,29 @@ docker compose run web COMMAND
 ```
 docker compose run web python app/seeds.py
 ```
+
+## Deploy
+
+1. Create your account in AWS
+
+2. Install AWS CLI
+
+3. Login in AWS CLI
+
+4. Change variables in ./scripts/setup.sh:
+
+```sh
+REGION="us-east-1"
+AWS_ACCOUNT_ID="111111111111"
+PROJECT_NAME="fastapi-template"
+```
+
+5. Run setup.sh script:
+
+```
+sh ./scripts/setup.sh
+```
+
+6. Change AWS Lambda function URL permissions in AWS Console 
+
+
