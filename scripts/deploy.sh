@@ -1,24 +1,36 @@
 #!/bin/sh
 
-# Build the project
+
+REGION="us-east-1"
+AWS_ACCOUNT_ID="111111111111"
+PROJECT_NAME="fastapi-template"
+
+IMAGE_URI="$AWS_ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$PROJECT_NAME:latest"
+
+
+echo ========== Build the project ==========
+
 uv lock
-docker build -t fastapi-app lambda.DockerFile
+docker build -t $PROJECT_NAME -f ./lambda.Dockerfile .
 
-# Push image to ECR
-aws ecr get-login-password --region region | docker login --username AWS --password-stdin aws_account_id.dkr.ecr.region.amazonaws.com
-docker tag fastapi-app:latest aws_account_id.dkr.ecr.region.amazonaws.com/fastapi-app:latest
-docker push aws_account_id.dkr.ecr.region.amazonaws.com/fastapi-app:latest
+echo ========== Build the project ==========
 
-# Create AWS Lambda function
-aws lambda create-function \
-   --function-name myFunction \
-   --package-type Image \
-   --code ImageUri=aws_account_id.dkr.ecr.region.amazonaws.com/fastapi-app:latest \
-   --role arn:aws:iam::111122223333:role/my-lambda-role
 
-# Update AWS Lambda function 
+echo ========== Push image to ECR ==========
+
+aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $IMAGE_URI
+docker tag $PROJECT_NAME:latest $IMAGE_URI
+docker push $IMAGE_URI
+
+echo ========== Push image to ECR ==========
+
+
+echo ========== Update AWS Lambda function  ==========
+
 aws lambda update-function-code \
-   --function-name myFunction \
-   --image-uri aws_account_id.dkr.ecr.region.amazonaws.com/fastapi-app:latest \
+   --function-name $PROJECT_NAME \
+   --image-uri $IMAGE_URI \
    --publish
 
+
+echo ========== Update AWS Lambda function  ==========
