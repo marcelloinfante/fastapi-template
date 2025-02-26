@@ -8,7 +8,7 @@ on:
     branches: ["main"]
 
 jobs:
-  build:
+  test:
     name: Test
     runs-on: ubuntu-latest
     steps:
@@ -19,3 +19,36 @@ jobs:
 
       - name: Run tests
         run: docker compose run web pytest
+
+  # deploy:
+  #   name: Deploy
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+
+  #     - uses: aws-actions/configure-aws-credentials@v3
+  #       with:
+  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         aws-region: ${{ env.AWS_REGION }}
+
+  #     - name: Login to Amazon ECR
+  #       run: aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $IMAGE_URI
+
+  #     - name: Install dependencies
+  #       run: uv lock
+
+  #     - name: Build image
+  #       run: docker build -t $PROJECT_NAME -f ./lambda.Dockerfile .
+
+  #     - name: Tag image
+  #       run: docker tag $PROJECT_NAME:latest $IMAGE_URI
+
+  #     - name: Push image
+  #       run: docker push $IMAGE_URI
+
+  #     - name: Deploy
+  #       run: aws lambda update-function-code \
+  #         --function-name $PROJECT_NAME \
+  #         --image-uri $IMAGE_URI \
+  #         --publish

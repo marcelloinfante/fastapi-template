@@ -2,6 +2,8 @@ services:
   web:
     build: .
     command: fastapi dev app/main.py --host 0.0.0.0 --port 8000
+    volumes:
+      - ./app/migrations/versions:/app/app/migrations/versions
     ports:
       - 8000:8000
     depends_on:
