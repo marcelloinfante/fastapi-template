@@ -1,8 +1,8 @@
 """“first_commit”
 
-Revision ID: dafedb62fe73
+Revision ID: 627c4733fe1f
 Revises: 
-Create Date: 2024-08-13 13:50:49.268565
+Create Date: 2025-02-26 14:07:22.554122
 
 """
 from alembic import op
@@ -11,7 +11,7 @@ import sqlmodel
 
 
 # revision identifiers, used by Alembic.
-revision = 'dafedb62fe73'
+revision = '627c4733fe1f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,7 +23,7 @@ def upgrade() -> None:
     sa.Column('email', sqlmodel.sql.sqltypes.AutoString(), nullable=False),
     sa.Column('first_name', sqlmodel.sql.sqltypes.AutoString(), nullable=False),
     sa.Column('last_name', sqlmodel.sql.sqltypes.AutoString(), nullable=False),
-    sa.Column('id', sqlmodel.sql.sqltypes.GUID(), nullable=False),
+    sa.Column('id', sa.Uuid(), nullable=False),
     sa.Column('is_admin', sa.Boolean(), nullable=False),
     sa.Column('hashed_password', sqlmodel.sql.sqltypes.AutoString(), nullable=False),
     sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
@@ -35,8 +35,8 @@ def upgrade() -> None:
     op.create_index(op.f('ix_user_email'), 'user', ['email'], unique=False)
     op.create_table('plan',
     sa.Column('type', sa.Enum('BASIC', 'STARTER', 'PREMIUM', name='typeenum'), nullable=False),
-    sa.Column('id', sqlmodel.sql.sqltypes.GUID(), nullable=False),
-    sa.Column('user_id', sqlmodel.sql.sqltypes.GUID(), nullable=True),
+    sa.Column('id', sa.Uuid(), nullable=False),
+    sa.Column('user_id', sa.Uuid(), nullable=True),
     sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
     sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
