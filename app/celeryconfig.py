@@ -1,2 +1,4 @@
-broker_url = "redis://redis:6379"
-result_backend = "redis://redis:6379"
+from app.config import settings
+
+broker_url = settings.celery_broker_url
+result_backend = settings.celery_result_backend

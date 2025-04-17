@@ -18,6 +18,8 @@ class Settings(BaseSettings):
     database_url: str = "postgresql://fastapi:fastapi@db:5432/fastapi"
     hash_algorithm: str = "HS256"
     admin_secret_key: str = "360"
+    celery_broker_url: str = "redis://redis:6379"
+    celery_result_backend: str = "redis://redis:6379"
     access_token_expire_minutes: int = 360
 
 
