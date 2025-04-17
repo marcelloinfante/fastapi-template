@@ -9,6 +9,20 @@ services:
     depends_on:
       - db
       - redis
+      - worker
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+        - action: rebuild
+          path: ./uv.lock
+  worker:
+    build: .
+    command: celery -A app worker -l info
+    depends_on:
+      - db
+      - redis
     develop:
       watch:
         - action: sync
