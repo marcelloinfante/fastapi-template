@@ -10,8 +10,10 @@
 - Tests ([Pytest](https://docs.pytest.org/en/stable/))
 - Coverage ([Coverage](https://coverage.readthedocs.io/en/7.6.1/))
 - camelCase API
+- [Celery](https://docs.celeryq.dev/)
 - [Docker](https://www.docker.com/)
 - [PostgreSQL](https://www.postgresql.org/)
+- [Redis](https://redis.io/)
 - CI/CD ([Github Actions](https://github.com/features/actions))
 - [AWS Lamdba](https://aws.amazon.com/pt/lambda/) ([Mangum](https://mangum.fastapiexpert.com/))
 
@@ -162,6 +164,4 @@ PROJECT_NAME="fastapi-template"
 sh ./scripts/setup.sh
 ```
 
-6. Change AWS Lambda function URL permissions in AWS Console 
-
-
+6. Change AWS Lambda function URL permissions in AWS Console

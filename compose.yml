@@ -8,6 +8,21 @@ services:
       - 8000:8000
     depends_on:
       - db
+      - redis
+      - worker
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+        - action: rebuild
+          path: ./uv.lock
+  worker:
+    build: .
+    command: celery -A app worker -l info
+    depends_on:
+      - db
+      - redis
     develop:
       watch:
         - action: sync
@@ -25,6 +40,11 @@ services:
       - POSTGRES_DB=fastapi
       - POSTGRES_USER=fastapi
       - POSTGRES_PASSWORD=fastapi
+  redis:
+    image: redis
+    volumes:
+      - redis_data:/data
 
 volumes:
   postgres_data:
+  redis_data:
