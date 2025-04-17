@@ -30,4 +30,5 @@ dependencies = [
     "python-jose>=3.4.0",
     "itsdangerous>=2.2.0",
     "mangum>=0.19.0",
+    "celery>=5.5.1",
 ]
